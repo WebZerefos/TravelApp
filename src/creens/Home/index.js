@@ -1,14 +1,13 @@
-import {View, Text} from 'react-native';
-import React from 'react';
-
-import styles from './styles';
+import {View} from 'react-native';
+import React, {memo} from 'react';
+import Title from '../../components/Title';
 
 const Home = () => {
   return (
     <View>
-      <Text style={styles.title}>Home</Text>
+      <Title text="My first component" />
     </View>
   );
 };
 
-export default Home;
+export default memo(Home);
