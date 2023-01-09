@@ -1,11 +1,10 @@
 import {Text, FlatList, TouchableOpacity} from 'react-native';
-import React from 'react';
+import React, {memo} from 'react';
 import styles from './styles';
 
 const Categories = ({categories, selectedCategory, onCategoryPress}) => {
   return (
     <FlatList
-      style={{borderWidth: 1, marginRight: -32}}
       horizontal
       showsHorizontalScrollIndicator={false}
       data={categories}
@@ -32,4 +31,4 @@ const Categories = ({categories, selectedCategory, onCategoryPress}) => {
   );
 };
 
-export default Categories;
+export default memo(Categories);

@@ -4,6 +4,7 @@ import React, {memo, useState} from 'react';
 import Title from '../../components/Title';
 import styles from './styles';
 import Categories from '../../components/Categories';
+import AttractionCard from '../../components/AttractionCard';
 
 const Home = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
@@ -27,6 +28,16 @@ const Home = () => {
         ]}
         onCategoryPress={setSelectedCategory}
       />
+
+      <View style={styles.row}>
+        <AttractionCard
+          imageSrc={
+            'https://www.planetware.com/photos-large/F/france-paris-eiffel-tower.jpg'
+          }
+          title={'Entertainment in Paris'}
+          subtitle={'Paris'}
+        />
+      </View>
     </View>
   );
 };

@@ -10,6 +10,9 @@ const styles = StyleSheet.create({
     marginTop: 40,
     marginBottom: 16,
   },
+  row: {
+    flexDirection: 'row',
+  },
 });
 
 export default styles;
