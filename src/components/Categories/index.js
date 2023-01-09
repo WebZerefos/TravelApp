@@ -6,9 +6,10 @@ const Categories = ({categories, selectedCategory, onCategoryPress}) => {
   return (
     <FlatList
       horizontal
+      keyExtractor={item => String(item)}
       showsHorizontalScrollIndicator={false}
       data={categories}
-      renderItem={({item}) => {
+      renderItem={({item, index}) => {
         const selected = selectedCategory === item;
         return (
           <TouchableOpacity

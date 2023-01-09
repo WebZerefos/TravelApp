@@ -1,5 +1,5 @@
 import {View, Text, Image} from 'react-native';
-import React from 'react';
+import React, {memo} from 'react';
 import styles from './styles';
 
 const AttractionCard = ({imageSrc, title, subtitle}) => {
@@ -18,5 +18,5 @@ const AttractionCard = ({imageSrc, title, subtitle}) => {
   );
 };
 
-export default AttractionCard;
+export default memo(AttractionCard);
 // location_mini.png
