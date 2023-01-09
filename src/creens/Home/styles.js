@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#000',
     marginTop: 40,
-    marginBottom: 34,
+    marginBottom: 16,
   },
 });
 
