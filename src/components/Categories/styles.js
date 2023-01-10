@@ -1,19 +1,17 @@
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
-  categoryItem: {
+  item: {
     fontSize: 12,
     color: 'rgba(0,0,0,0.5)',
-
     paddingVertical: 2,
   },
   selectedItem: {
-    color: '#000',
-    fontWeight: '500',
+    color: '#000000',
   },
   itemContainer: {
     marginRight: 17,
-    marginVertical: 16,
+    marginBottom: 14,
   },
   selectedItemContainer: {
     borderBottomColor: '#4681A3',

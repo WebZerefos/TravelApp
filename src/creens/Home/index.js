@@ -1,54 +1,72 @@
 /* eslint-disable react-native/no-inline-styles */
-import {FlatList, SafeAreaView, View} from 'react-native';
-import React, {memo, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
+import {FlatList, SafeAreaView, Text, View} from 'react-native';
+import AttractionCard from '../../components/AttractionCard';
+import Categories from '../../components/Categories';
 import Title from '../../components/Title';
 import styles from './styles';
-import Categories from '../../components/Categories';
-import AttractionCard from '../../components/AttractionCard';
 import jsonData from '../../data/attractions.json';
+import categories from '../../data/categories.json';
+
+const ALL = 'All';
 
 const Home = () => {
-  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [selectedCategory, setSelectedCategory] = useState(ALL);
   const [data, setData] = useState([]);
 
   useEffect(() => {
     setData(jsonData);
   }, []);
 
+  useEffect(() => {
+    if (selectedCategory === ALL) {
+      setData(jsonData);
+    } else {
+      const filteredData = jsonData?.filter(item =>
+        item?.categories?.includes(selectedCategory),
+      );
+
+      setData(filteredData);
+    }
+  }, [selectedCategory]);
+
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
+        data={data}
+        numColumns={2}
+        style={{flexGrow: 1}}
+        ListEmptyComponent={
+          <Text style={styles.emptyText}>No items found.</Text>
+        }
         ListHeaderComponent={
           <>
-            <Title text="Where do" style={{fontWeight: '300'}} />
-            <Title text="You want to go?" />
+            <View style={{margin: 32}}>
+              <Title text="Where do" style={{fontWeight: 'normal'}} />
+              <Title text="you want to go" />
 
-            <Title text="Explore attractions" style={styles.subtitle} />
+              <Title text="Explore Attractions" style={styles.subtitle} />
+            </View>
 
             <Categories
-              style={styles.cat}
               selectedCategory={selectedCategory}
-              categories={[
-                'All',
-                'Popular',
-                'Historical',
-                'Trending',
-                'Random',
-                'One More Cat',
-                'And So On',
-              ]}
               onCategoryPress={setSelectedCategory}
+              categories={[ALL, ...categories]}
             />
           </>
         }
-        data={data}
-        numColumns={2}
         keyExtractor={item => String(item?.id)}
         renderItem={({item, index}) => (
           <AttractionCard
+            key={item.id}
+            style={
+              index % 2 === 0
+                ? {marginRight: 12, marginLeft: 32}
+                : {marginRight: 32}
+            }
+            title={item.name}
+            subtitle={item.city}
             imageSrc={item.images?.length ? item.images[0] : null}
-            title={'Entertainment in Paris'}
-            subtitle={'Paris'}
           />
         )}
       />
@@ -56,4 +74,4 @@ const Home = () => {
   );
 };
 
-export default memo(Home);
+export default React.memo(Home);

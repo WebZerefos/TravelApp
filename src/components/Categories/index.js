@@ -1,28 +1,27 @@
-import {Text, FlatList, TouchableOpacity} from 'react-native';
-import React, {memo} from 'react';
+/* eslint-disable react-native/no-inline-styles */
+import React from 'react';
+import {FlatList, Text, TouchableOpacity} from 'react-native';
 import styles from './styles';
 
 const Categories = ({categories, selectedCategory, onCategoryPress}) => {
   return (
     <FlatList
       horizontal
+      data={categories}
       keyExtractor={item => String(item)}
       showsHorizontalScrollIndicator={false}
-      data={categories}
       renderItem={({item, index}) => {
         const selected = selectedCategory === item;
+
         return (
           <TouchableOpacity
             onPress={() => onCategoryPress(item)}
             style={[
               styles.itemContainer,
               selected ? styles.selectedItemContainer : {},
+              index === 0 ? {marginLeft: 32} : {},
             ]}>
-            <Text
-              style={[
-                styles.categoryItem,
-                selected ? styles.selectedItem : {},
-              ]}>
+            <Text style={[styles.item, selected ? styles.selectedItem : {}]}>
               {item}
             </Text>
           </TouchableOpacity>
@@ -32,4 +31,4 @@ const Categories = ({categories, selectedCategory, onCategoryPress}) => {
   );
 };
 
-export default memo(Categories);
+export default React.memo(Categories);

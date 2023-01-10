@@ -4,7 +4,6 @@ const {width} = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   card: {
-    marginRight: 16,
     padding: 4,
     borderWidth: 1,
     borderColor: 'rgba(0,0,0,0.1)',
@@ -20,6 +19,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: '500',
     color: '#000',
+    marginLeft: 6,
     marginTop: 10,
   },
   subtitle: {
@@ -29,8 +29,9 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 4,
-    marginBottom: 10,
+    marginTop: 2,
+    marginBottom: 12,
+    marginLeft: 6,
   },
   icon: {
     marginRight: 4,
