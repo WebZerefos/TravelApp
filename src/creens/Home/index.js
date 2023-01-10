@@ -37,14 +37,13 @@ const Home = () => {
         numColumns={2}
         style={{flexGrow: 1}}
         ListEmptyComponent={
-          <Text style={styles.emptyText}>No items found.</Text>
+          <Text style={styles.emptyText}>No attractions found.</Text>
         }
         ListHeaderComponent={
           <>
             <View style={{margin: 32}}>
               <Title text="Where do" style={{fontWeight: 'normal'}} />
-              <Title text="you want to go" />
-
+              <Title text="you want to go?" />
               <Title text="Explore Attractions" style={styles.subtitle} />
             </View>
 

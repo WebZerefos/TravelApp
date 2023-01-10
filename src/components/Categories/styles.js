@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     marginBottom: 14,
   },
   selectedItemContainer: {
-    borderBottomColor: '#4681A3',
+    borderBottomColor: '#ee5253',
     borderBottomWidth: 1,
   },
 });
