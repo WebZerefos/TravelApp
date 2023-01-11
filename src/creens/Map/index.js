@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import {Image, Text, View} from 'react-native';
+import {Image, Text, TouchableOpacity, View} from 'react-native';
 import React, {memo} from 'react';
 import MapView, {Marker} from 'react-native-maps';
 import styles from './styles';
@@ -23,10 +23,13 @@ const Map = ({route, navigation}) => {
         <Marker coordinate={coords} title={item?.name} />
       </MapView>
       <View style={styles.header}>
-        <Image source={require('../../assets/back.png')} style={styles.back} />
-        <Text style={styles.title} onPress={goBack}>
-          {`${item?.name} - ${item?.city}`}
-        </Text>
+        <TouchableOpacity onPress={goBack}>
+          <Image
+            source={require('../../assets/back.png')}
+            style={styles.back}
+          />
+        </TouchableOpacity>
+        <Text style={styles.title}>{`${item?.name} - ${item?.city}`}</Text>
       </View>
     </View>
   );

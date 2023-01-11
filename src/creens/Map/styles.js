@@ -9,13 +9,13 @@ const styles = StyleSheet.create({
   header: {
     position: 'absolute',
     top: 40,
-    backgroundColor: 'white',
+    backgroundColor: 'rgba(255, 255, 255,0.8)',
     borderRadius: 15,
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     width: width - 48,
-    padding: 16,
+    padding: 10,
     margin: 24,
   },
   map: {
@@ -24,13 +24,16 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 20,
+    color: '#000',
+    fontWeight: '700',
   },
   back: {
-    width: 32,
-    height: 32,
+    width: 40,
+    height: 40,
     alignItems: 'center',
     justifyContent: 'center',
     color: 'white',
+    marginRight: 20,
   },
 });
 
