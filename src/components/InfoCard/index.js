@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-no-undef */
 import {Text, View, Image} from 'react-native';
 import React, {memo} from 'react';
 import styles from './styles';

@@ -25,54 +25,56 @@ const AttractionDetails = ({navigation, route}) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ImageBackground
-        style={styles.mainImage}
-        borderRadius={20}
-        source={{uri: mainImage}}>
-        <View style={styles.header}>
-          <Pressable hitSlop={8} onPress={goBack}>
-            <Image
-              style={styles.icon}
-              source={require('../../assets/back.png')}
-            />
+      <View style={styles.content}>
+        <ImageBackground
+          style={styles.mainImage}
+          borderRadius={20}
+          source={{uri: mainImage}}>
+          <View style={styles.header}>
+            <Pressable hitSlop={8} onPress={goBack}>
+              <Image
+                style={styles.icon}
+                source={require('../../assets/back.png')}
+              />
+            </Pressable>
+            <Pressable>
+              <Image
+                style={styles.icon}
+                source={require('../../assets/share.png')}
+              />
+            </Pressable>
+          </View>
+          <Pressable style={styles.footer} onPress={onGalleryNavigate}>
+            {sliceImages.map((image, index) => (
+              <View key={image}>
+                <Image style={styles.imageThumbnail} source={{uri: image}} />
+                {diffImages > 0 && index === sliceImages?.length - 1 ? (
+                  <Text style={styles.moreImages}>{`+${diffImages}`}</Text>
+                ) : null}
+              </View>
+            ))}
           </Pressable>
-          <Pressable>
-            <Image
-              style={styles.icon}
-              source={require('../../assets/share.png')}
-            />
-          </Pressable>
-        </View>
-        <Pressable style={styles.footer} onPress={onGalleryNavigate}>
-          {sliceImages.map((image, index) => (
-            <View key={image}>
-              <Image style={styles.imageThumbnail} source={{uri: image}} />
-              {diffImages > 0 && index === sliceImages?.length - 1 ? (
-                <Text style={styles.moreImages}>{`+${diffImages}`}</Text>
-              ) : null}
-            </View>
-          ))}
-        </Pressable>
-      </ImageBackground>
+        </ImageBackground>
 
-      <View style={styles.headerContainer}>
-        <View style={styles.textContainer}>
-          <Text style={styles.title}>{item?.name}</Text>
-          <Text style={styles.city}>{item?.city}</Text>
+        <View style={styles.headerContainer}>
+          <View style={styles.textContainer}>
+            <Text style={styles.title}>{item?.name}</Text>
+            <Text style={styles.city}>{item?.city}</Text>
+          </View>
+          <Text style={styles.price}>{item?.entry_price}</Text>
         </View>
-        <Text style={styles.price}>{item?.entry_price}</Text>
+
+        <InfoCard
+          icon={require('../../assets/location.png')}
+          text={item.address}
+        />
+
+        <InfoCard
+          icon={require('../../assets/schedule.png')}
+          text={`OPEN 
+${item.opening_time} - ${item.closing_time}`}
+        />
       </View>
-
-      <InfoCard
-        icon={require('../../assets/location.png')}
-        text={item.address}
-      />
-
-      <InfoCard
-        icon={require('../../assets/schedule.png')}
-        text={`${item.opening_time}
-${item.closing_time}`}
-      />
     </SafeAreaView>
   );
 };

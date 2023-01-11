@@ -4,6 +4,8 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
+    marginBottom: 20,
+    marginHorizontal: 10,
   },
   icon: {
     width: 42,
