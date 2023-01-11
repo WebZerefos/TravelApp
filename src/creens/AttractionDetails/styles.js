@@ -53,18 +53,19 @@ const styles = StyleSheet.create({
     fontSize: 30,
   },
   headerContainer: {
+    flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     marginHorizontal: 10,
     marginVertical: 40,
+    flexWrap: 'wrap',
   },
   textContainer: {},
   title: {
-    fontSize: 32,
+    fontSize: 30,
     color: '#000',
     fontWeight: '700',
-    flexWrap: 'wrap',
   },
   city: {
     fontSize: 20,
@@ -73,13 +74,23 @@ const styles = StyleSheet.create({
     fontWeight: '500',
   },
   price: {
-    fontSize: 32,
+    fontSize: 30,
     color: '#000',
     fontWeight: '700',
   },
-  infoContainer: {},
-  locationIcon: {},
-  scheduleIcon: {},
+  map: {
+    width: '100%',
+    height: 200,
+    borderRadius: 10,
+  },
+  mapText: {
+    fontWeight: '700',
+    fontSize: 16,
+    color: '#ee5253',
+    textAlign: 'center',
+    padding: 16,
+    marginBottom: 50,
+  },
 });
 
 export default styles;
