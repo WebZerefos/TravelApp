@@ -10,6 +10,8 @@ import {
 } from 'react-native';
 import React, {memo} from 'react';
 import MapView, {Marker} from 'react-native-maps';
+import Share from 'react-native-share';
+import ImgToBase64 from 'react-native-image-base64';
 import styles from './styles';
 import InfoCard from '../../components/InfoCard';
 
@@ -34,6 +36,30 @@ const AttractionDetails = ({navigation, route}) => {
     navigation.navigate('Gallery', {images: item?.images});
   };
 
+  const onShare = async () => {
+    try {
+      const imageWithoutParams = mainImage?.split('?')[0];
+      const imageParts = imageWithoutParams?.split('.');
+      const imageExtension = imageParts[imageParts?.length - 1];
+
+      const base64Image = await ImgToBase64.getBase64String(mainImage);
+
+      Share.open({
+        title: item?.name,
+        message: 'Hey I want to share with you this amazing attraction.',
+        url: `data:image/${imageExtension || 'jpg'};base64,${base64Image}`,
+      })
+        .then(res => {
+          console.log(res);
+        })
+        .catch(err => {
+          err && console.log(err);
+        });
+    } catch (error) {
+      console.log('SHARING ERROR >>>', error.message);
+    }
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -49,7 +75,7 @@ const AttractionDetails = ({navigation, route}) => {
                   source={require('../../assets/back.png')}
                 />
               </Pressable>
-              <Pressable>
+              <Pressable onPress={onShare}>
                 <Image
                   style={styles.icon}
                   source={require('../../assets/share.png')}

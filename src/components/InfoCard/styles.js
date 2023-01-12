@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
   icon: {
     width: 42,
     height: 42,
+    marginRight: 15,
   },
   text: {
     fontSize: 12,
